@@ -492,8 +492,25 @@ border: none;</string>
          <property name="focusPolicy">
           <enum>Qt::NoFocus</enum>
          </property>
+         <property name="styleSheet">
+          <string notr="true">#tabWidget{
+	background-color: #fff
+}
+
+QTabBar::close-button{
+	margin-left: 3px;
+	image: url(:/icons/icon/x-mark-4-32.ico);
+}
+
+QTabBar::close-button:hover{
+	image: url(:/icons/icon/x-mark-4-48.ico);
+}</string>
+         </property>
          <property name="currentIndex">
           <number>-1</number>
+         </property>
+         <property name="tabsClosable">
+          <bool>true</bool>
          </property>
         </widget>
        </item>

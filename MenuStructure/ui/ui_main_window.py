@@ -254,6 +254,19 @@ class Ui_MainWindow(object):
         self.tabWidget = QTabWidget(self.main_widget)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setFocusPolicy(Qt.NoFocus)
+        self.tabWidget.setStyleSheet(u"#tabWidget{\n"
+"	background-color: #fff\n"
+"}\n"
+"\n"
+"QTabBar::close-button{\n"
+"	margin-left: 3px;\n"
+"	image: url(:/icons/icon/x-mark-4-32.ico);\n"
+"}\n"
+"\n"
+"QTabBar::close-button:hover{\n"
+"	image: url(:/icons/icon/x-mark-4-48.ico);\n"
+"}")
+        self.tabWidget.setTabsClosable(True)
 
         self.verticalLayout_4.addWidget(self.tabWidget)
 

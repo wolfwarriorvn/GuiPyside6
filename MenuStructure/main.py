@@ -1,3 +1,4 @@
+# pylint: disable=comparison-with-itself
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6 import QtWidgets
@@ -30,6 +31,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.show_home_window()
 
         "Connect signal and slot"
+        self.tabWidget.tabCloseRequested.connect(self.close_tab)
+
         self.btn_home.clicked.connect(self.show_selected_window)
         self.btn_dashboard.clicked.connect(self.show_selected_window)
         self.btn_lexus.clicked.connect(self.show_selected_window)
@@ -53,12 +56,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
     def set_btn_checked(self, btn):
         for button in self.menu_btn_dict.keys():
-            if btn != btn:
+            if button != btn:
                 button.setChecked(False)
             else:
                 button.setChecked(True)
 
 
+    def close_tab(self, index):
+        self.tabWidget.removeTab(index)
+
+        if self.tabWidget.count() == 0:
+            self.toolBox.setCurrentIndex(0)
+            self.show_home_window()
     def show_selected_window(self):
         button = self.sender()
         result = self.open_tab_flag(button.text())
